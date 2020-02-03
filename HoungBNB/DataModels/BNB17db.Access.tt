@@ -1,0 +1,17 @@
+<#@ template language="C#" debug="True" hostSpecific="True"                        #>
+<#@ output extension=".generated.cs"                                               #>
+<#@ include file="$(ProjectDir)LinqToDB.Templates\LinqToDB.Access.Tools.ttinclude" #>
+<#@ include file="$(ProjectDir)LinqToDB.Templates\PluralizationService.ttinclude"  #>
+<#@ import namespace="System.IO" #>
+<#
+
+	NamespaceName = "HoungBNB.DataModels";
+
+	string path = String.Concat(
+	Path.GetDirectoryName(Host.TemplateFile),
+	"../../App_Data/");
+
+	LoadAccessMetadata(path, "BNB17db.mdb"); 
+
+	GenerateModel();
+#>
